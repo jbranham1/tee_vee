@@ -31,4 +31,13 @@ class ShowTest < MiniTest::Test
 
     assert_equal 2600000, knight_rider.total_salary
   end
+
+  def test_highest_paid_actor
+    character_hash = {name: "KITT", actor: "William Daniels", salary: 1_000_000}
+    kitt = Character.new(character_hash)
+    michael_knight = Character.new({name: "Michael Knight", actor: "David Hasselhoff", salary: 1_600_000})
+    knight_rider = Show.new("Knight Rider", "Glen Larson", [michael_knight, kitt])
+
+    assert_equal "David Hasselhoff", knight_rider.highest_paid_actor
+  end
 end
