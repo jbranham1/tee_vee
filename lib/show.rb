@@ -26,4 +26,11 @@ class Show
       character.actor
     end
   end
+
+  def get_main_characters
+    @characters.select do |character|
+      character.salary > 500_000 &&
+      character.name.upcase == character.name
+    end
+  end
 end

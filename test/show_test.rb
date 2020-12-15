@@ -49,4 +49,13 @@ class ShowTest < MiniTest::Test
 
     assert_equal ["David Hasselhoff", "William Daniels"], knight_rider.actors
   end
+
+  def test_get_main_characters
+    character_hash = {name: "KITT", actor: "William Daniels", salary: 1_000_000}
+    kitt = Character.new(character_hash)
+    michael_knight = Character.new({name: "Michael Knight", actor: "David Hasselhoff", salary: 1_600_000})
+    knight_rider = Show.new("Knight Rider", "Glen Larson", [michael_knight, kitt])
+
+    assert_equal [kitt], knight_rider.get_main_characters
+  end
 end
