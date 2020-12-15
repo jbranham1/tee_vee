@@ -15,4 +15,15 @@ class NetworkTest < MiniTest::Test
     assert_equal "NBC", nbc.name
     assert_equal [], nbc.shows
   end
+
+  def test_add_show
+    character_hash = {name: "KITT", actor: "William Daniels", salary: 1_000_000}
+    kitt = Character.new(character_hash)
+    michael_knight = Character.new({name: "Michael Knight", actor: "David Hasselhoff", salary: 1_600_000})
+    knight_rider = Show.new("Knight Rider", "Glen Larson", [michael_knight, kitt])
+    nbc = Network.new("NBC")
+    nbc.add_show(knight_rider)
+
+    assert_equal [knight_rider], nbc.shows
+  end
 end
