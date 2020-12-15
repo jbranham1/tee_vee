@@ -22,4 +22,22 @@ class Network
       hash[show] = show.actors
     end
   end
+
+  def shows_by_actor
+    find_all_actors.each_with_object({}) do |actor, hash|
+      hash[actor] = find_shows_for_actor(actor)
+    end
+  end
+
+  def find_all_actors
+    @shows.map do |show|
+      show.actors
+    end.flatten.uniq
+  end
+
+  def find_shows_for_actor(actor)
+    @shows.select do |show|
+      show.actors.any?(actor)
+    end
+  end
 end
