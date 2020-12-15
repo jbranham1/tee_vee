@@ -16,4 +16,10 @@ class Network
       array << show.get_main_characters
     end.flatten
   end
+
+  def actors_by_show
+    @shows.each_with_object({}) do |show, hash|
+      hash[show] = show.actors
+    end
+  end
 end
