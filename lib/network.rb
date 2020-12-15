@@ -40,4 +40,10 @@ class Network
       show.actors.any?(actor)
     end
   end
+
+  def prolific_actors
+    shows_by_actor.each_with_object([]) do |actor, array|
+      array << actor[0] if actor[1].count > 1
+    end
+  end
 end
